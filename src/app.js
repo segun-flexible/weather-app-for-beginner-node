@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 3000;
 const path = require("path")
 const hbs = require("hbs");
 const getWeather = require("./utils/getWeather");
@@ -17,6 +18,7 @@ app.set("views",templatesDir)
 hbs.registerPartials(partialsDir)
 
 app.get("/",(req,res)=>{
+   
     res.render("index",{title:"Homepage",name:"Segun Flexible"})
 })
 
@@ -42,4 +44,4 @@ app.get("*",(req,res)=>{
     res.render("404",{title:"404 - Not Found",name:"Segun 4040"})
 })
 
-app.listen(3000)
+app.listen(port,()=>console.log("App Started!!"))
